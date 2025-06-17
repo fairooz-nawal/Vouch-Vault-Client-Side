@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router';
 const Navbar = () => {
     const link = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
-        <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Services</NavLink></li>
+        <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>
         <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Add Services</NavLink></li>
         <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
         <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Review</NavLink></li>
