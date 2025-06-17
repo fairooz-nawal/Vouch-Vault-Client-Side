@@ -9,7 +9,6 @@ const Partner = () => {
             <div className="w-full md:w-3/4 lg:w-3/4 mx-auto p-5 space-y-4 text-center">
                 <p className='text-orange-600 font-semibold text-2xl'>Meet Our Partners</p>
                 <h1 className='text-gray-800 text-2xl md:text-3xl lg:text-5xl font-bold'>We Work With</h1>
-                <p className='text-gray-600'>Our app is your one-stop solution for all type of services like transport, food, medicine, and more. Our app is your one-stop solution for all. We have partnered with leading utility companies such as DESCO, NESCO, and WASA, as well as top banks and financial institutions, to bring you a seamless and convenient payment experience.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5 md:p-10 lg:p-10 ">

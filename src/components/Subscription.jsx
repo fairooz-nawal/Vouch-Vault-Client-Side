@@ -5,7 +5,7 @@ const Subscription = () => {
         <div className='mt-[10%] md:mt-[100px]'>
             <div className="text-center">
                 <p className='text-orange-600 font-semibold text-2xl'>Subscribe to us</p>
-                <h className=' text-2xl md:text-3xl lg:text-5xl font-bold'>Lets Connect</h>
+                <h1 className=' text-2xl md:text-3xl lg:text-5xl font-bold'>Lets Connect</h1>
             </div>
             <div className=" bg-white min-h-screen ">
                 <div className="grid grid-cols-1 md:grid-cols-2 bg-red-600 gap-4">

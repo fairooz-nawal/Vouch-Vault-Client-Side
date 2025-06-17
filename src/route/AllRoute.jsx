@@ -8,6 +8,7 @@ import AddServices from "../pages/AddServices";
 import MyServices from "../pages/MyServices";
 import MyReview from "../pages/MyReview";
 import AuthLayout from "../layout/AuthLayout";
+import ServiceDetail from "../pages/ServiceDetail";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
         {
             index:true,
             path:"/",
-            Component: Home
+            Component: Home,
+            loader: () => fetch('http://localhost:3000/services')
         },
         {
             path:"/services",
@@ -35,6 +37,11 @@ const router = createBrowserRouter([
             path:"/myReview",
             Component: MyReview
         },
+        {
+            path:"/singleService/:id",
+            Component: ServiceDetail,
+            loader: ({params})=>fetch(`http://localhost:3000/services/${params.id}`),
+        }
     ]
   },
   {
