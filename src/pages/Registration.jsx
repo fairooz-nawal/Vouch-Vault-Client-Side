@@ -5,21 +5,31 @@ import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2'
 import { AuthProvider } from '../components/ContextAPI';
 const Registration = () => {
-    const { signUpUser } = useContext(AuthProvider);
+    const { signUpUser, updateUser,setUser } = useContext(AuthProvider);
     const [error, setError] = useState('');
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        // const name = e.target.name.value;
-        // const photo = e.target.Photo.value;
+        const name = e.target.name.value;
+        const photo = e.target.Photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
-
+        const userDetails = { displayName: name, photoURL: photo };
+        updateUser(userDetails);
+        setError('');
         if (passwordRegex.test(password)) {
             //creating new User
             signUpUser(email, password)
                 .then((result) => {
                     const user = result.user;
+                    updateUser({ displayName: name, photoURL: photo })
+                        .then(() => {
+                            setUser({ ...user, displayName: name, photoURL: photo });
+                        })
+                        .catch((error) => {
+                            //    console.log(error);
+                            setUser(user);
+                        });
                     if (user) {
                         Swal.fire({
                             title: "Registration Done Successfully",
