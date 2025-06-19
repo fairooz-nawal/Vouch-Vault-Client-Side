@@ -1,10 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 import { useLoaderData } from 'react-router';
-
+import Swal from 'sweetalert2'
 const ServiceDetail = () => {
+    const [date, setDate] = useState('');
+    const [rating, setRating] = useState(0);
+    useEffect(() => {
+        const currentDate = new Date();
+        setDate(currentDate.toISOString().split('T')[0]);
+    }, []);
+
     const single = useLoaderData();
-    console.log(single);
     const { _id, addedDate, category, companyName, description, price, serviceImage, serviceTitle, userEmail, website } = single;
+    const handleReview = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const review = form.message.value;
+        console.log(review);
+        fetch('http://localhost:3000/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({review, addedDate: date, userEmail: "test", rating: rating }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Service is added Successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+                    form.reset();
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while adding the service.');
+            });
+    }
     return (
         <div className="py-[100px] bg-white">
             <div className="max-w-5xl mx-auto">
@@ -33,7 +76,22 @@ const ServiceDetail = () => {
 
                         {/* <button onClick={() => handleLike(singleRecipe._id)} className="btn btn-primary">Like this Recipe</button> */}
                     </div>
-                </div>
+                </div><br />
+                <h1 className="text-xl md:text-2xl font-bold">Add Your Review Here</h1>
+                <form onSubmit={handleReview} className="mt-5">
+                    <textarea
+                        className="textarea textarea-bordered w-full h-32"
+                        name="message"
+                        placeholder="Write your message here..."
+                    ></textarea>
+                    <Rating
+                        style={{ maxWidth: 180 }}
+                        value={rating}
+                        onChange={setRating}
+                        isRequired
+                    />
+                    <button className="btn btn-primary mt-3">Submit Review</button>
+                </form>
             </div>
         </div>
     );

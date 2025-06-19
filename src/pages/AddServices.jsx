@@ -20,7 +20,7 @@ const AddServices = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(serviceData),
+            body: JSON.stringify({...serviceData, addedDate: date, userEmail:"test"}),
         })
             .then(response => response.json())
             .then(data => {
@@ -52,8 +52,6 @@ const AddServices = () => {
                     <div className="card-body">
                         <h1 className="text-3xl font-bold">Add Service here</h1>
                         <form onSubmit={handleAddService}>
-                            <label className="label text-lg">Email</label>
-                            <input type="email" className="input w-full" name="email" disabled="true" defaultValue="test" />
                             <label className="label text-lg">Service Image</label>
                             <input type="text" className="input w-full" name="serviceImage" placeholder="Enter photo" />
                             <label className="label text-lg">Service Title</label>
@@ -68,8 +66,6 @@ const AddServices = () => {
                             <input type="text" className="input w-full" name="category" placeholder="Enter category" />
                             <label className="label text-lg">Price</label>
                             <input type="text" className="input w-full" name="price" placeholder="Enter price" />
-                             <label className="label text-lg">Date</label>
-                            <input type="text" className="input w-full" name="addedDate" value={date} disabled="true" />
 
                             <button className="btn btn-neutral mt-4">Add Service</button>
                         </form>
