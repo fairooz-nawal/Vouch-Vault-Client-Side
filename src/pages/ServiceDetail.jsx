@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2'
+import SingleReview from '../components/SingleReview';
+
+const reviewPromise = fetch('http://localhost:3000/reviews')
+    .then(res => res.json())
 const ServiceDetail = () => {
+    const allreviewdb = use(reviewPromise);
+    const single = useLoaderData();
+    const { _id, addedDate, category, companyName, description, price, serviceImage, serviceTitle, userEmail, website } = single;
+    const allreview = allreviewdb.filter(review => review.serviceId === _id);
+    
     const [date, setDate] = useState('');
     const [rating, setRating] = useState(0);
     useEffect(() => {
         const currentDate = new Date();
         setDate(currentDate.toISOString().split('T')[0]);
     }, []);
-
-    const single = useLoaderData();
-    const { _id, addedDate, category, companyName, description, price, serviceImage, serviceTitle, userEmail, website } = single;
     const handleReview = (e) => {
         e.preventDefault();
         const form = e.target;
         const review = form.message.value;
-        console.log(review);
         fetch('http://localhost:3000/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({review, addedDate: date, userEmail: "test", rating: rating }),
+            body: JSON.stringify({review, addedDate: date, userEmail: "test", rating: rating,serviceId:_id}),
         })
             .then(response => response.json())
             .then(data => {
@@ -33,8 +38,11 @@ const ServiceDetail = () => {
                         title: "Service is added Successfully!",
                         icon: "success",
                         draggable: true
+                    }).then(()=>{
+                         form.reset();
+                        window.location.reload();
                     });
-                    form.reset();
+                   
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -42,6 +50,7 @@ const ServiceDetail = () => {
                         text: "Something went wrong!",
                     });
                 }
+                
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -91,7 +100,13 @@ const ServiceDetail = () => {
                         isRequired
                     />
                     <button className="btn btn-primary mt-3">Submit Review</button>
-                </form>
+                </form><br />
+                 <h1 className="text-xl md:text-2xl font-bold">All Reviews</h1>
+                 
+               {
+                allreview.length === 0 ? <p className='text-white p-5 bg-red-500 font-bold rounded-2xl'>No reviews found for this service.</p> :
+                allreview.map(singleReview => <SingleReview key={singleReview._id} singleReview={singleReview}></SingleReview>)
+               }
             </div>
         </div>
     );
