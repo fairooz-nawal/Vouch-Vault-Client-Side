@@ -64,7 +64,6 @@ const Registration = () => {
                             <input type="password" className="input text-gray-800" name="password" placeholder="Password" /><br /><br />
                             <div className="flex justify-between"> <div>Already Logged in? <Link className="btn text-gray-800 bg-amber-300 p-2 hover:bg-white hover:text-amber-300 " to="/auth/login">Login Now</Link></div>
                                 <button className="btn text-gray-800 bg-amber-300 p-2 hover:bg-white hover:text-amber-300 ">Register</button><br /></div>
-                            <button  className="btn bg-white hover:bg-amber-500 text-gray-700 mt-4"><FcGoogle></FcGoogle> Sign in with Google </button>
                         </form>
                     </div>
                     {error && <p className='text-red-500 text bold'>{error}</p>}
