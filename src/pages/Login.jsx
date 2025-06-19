@@ -40,7 +40,28 @@ const Login = () => {
             });
     }
 
-   
+    const handleGoogleSignIn = () => {
+        signUpWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                if (user) {
+                    Swal.fire({
+                        title: "Login Done Successfully",
+                        icon: "success",
+                        draggable: true
+                    });
+                }
+                navigate(location?.state || '/');
+            })
+            .catch((error) => {
+                Swal.fire({
+                    icon: "error",
+                    title: {error},
+                    text: "Something went wrong!",
+                });
+                navigate('/auth/login');
+            });
+    }
 
     const registrationLocation = () => {
         navigate('/auth/registration', { state: location.state });
@@ -68,7 +89,7 @@ const Login = () => {
                                 </div>
                                 <button className="btn text-white bg-amber-300 p-2 hover:bg-white hover:text-amber-300 ">Login</button><br />
                             </div>
-                            <button  className="btn bg-white hover:bg-amber-500 text-gray-700 mt-4"><FcGoogle></FcGoogle> Sign in with Google </button>
+                            <button onClick={handleGoogleSignIn} className="btn bg-white hover:bg-amber-500 text-gray-700 mt-4"><FcGoogle></FcGoogle> Sign in with Google </button>
                         </form>
                     </div>
                     {error && <p className='text-red-500 text bold'>{error}</p>}
