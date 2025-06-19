@@ -9,6 +9,8 @@ import MyServices from "../pages/MyServices";
 import MyReview from "../pages/MyReview";
 import AuthLayout from "../layout/AuthLayout";
 import ServiceDetail from "../pages/ServiceDetail";
+import Login from "../pages/Login";
+import Registration from "../pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -52,11 +54,11 @@ const router = createBrowserRouter([
         {
             index:true,
             path:"/auth/login",
-            Component: Home
+            Component: Login
         },
         {
             path:"/auth/register",
-            Component: Home
+            Component: Registration
         }
     ]
   }
