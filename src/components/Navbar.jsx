@@ -4,14 +4,17 @@ import { NavLink, Link } from 'react-router';
 import { AuthProvider } from "./ContextAPI";
 
 const Navbar = () => {
-    const {user} = useContext(AuthProvider);
+    const { user } = useContext(AuthProvider);
     console.log(user);
     const link = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
         <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>
-        <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Add Services</NavLink></li>
-        <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
-        <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Review</NavLink></li>
+        {user && <>
+            <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Add Services</NavLink></li>
+            <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
+            <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Review</NavLink></li>
+        </>}
+
     </>
     return (
         <div>
@@ -37,10 +40,15 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-                        <Link className="btn text-red-600 bg-white">User PHOTO</Link>
-                        <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/register">Register</Link>
-                        <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/login">Login</Link>
-                        <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/logout">Log Out</Link>
+                        {
+                            user ? <>
+                                <Link className="btn text-red-600 bg-white">User PHOTO</Link>
+                                <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/logout">Log Out</Link>
+                            </> : <>
+                                <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/register">Register</Link>
+                                <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/login">Login</Link>
+                            </>
+                        }
                     </div>
 
                 </div>
