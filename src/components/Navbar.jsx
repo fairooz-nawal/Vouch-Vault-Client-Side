@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import logo from "../assets/logo.png"
 import { NavLink, Link } from 'react-router';
+import { AuthProvider } from "./ContextAPI";
+
 const Navbar = () => {
+    const {user} = useContext(AuthProvider);
+    console.log(user);
     const link = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
         <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>

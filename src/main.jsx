@@ -5,9 +5,11 @@ import {
   RouterProvider,
 } from "react-router";
 import router from './route/AllRoute.jsx';
-
+import ContextAPI from './components/ContextAPI.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ContextAPI>
+      <RouterProvider router={router} />
+    </ContextAPI>
   </StrictMode>,
 )
