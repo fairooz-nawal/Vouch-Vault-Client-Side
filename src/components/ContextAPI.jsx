@@ -11,9 +11,10 @@ const ContextAPI = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null);
     const [reviews, setReviews] = useState([]);
+    const [services, setServices] = useState([]);
 
     useEffect(()=>{
-      fetch('http://localhost:3000/reviews')
+      fetch('http://localhost:3000/allServices')
       .then(res => res.json())
       .then(data => {
         setReviews(data);
@@ -60,7 +61,7 @@ const ContextAPI = ({ children }) => {
   }, []);
 
     const info = {
-        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser,reviews,setReviews
+        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser,reviews,setReviews,services, setServices
     }
     return (
         <AuthProvider.Provider value={info}>
