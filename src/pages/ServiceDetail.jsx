@@ -31,7 +31,7 @@ const ServiceDetail = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({review, addedDate: date, userEmail: user?.email, image:user?.photoURL, rating: rating, serviceId:_id}),
+            body: JSON.stringify({review, addedDate: date, userEmail: user?.email, image:user?.photoURL, rating: rating, serviceId:_id, serviceTitle:serviceTitle}),
         })
             .then(response => response.json())
             .then(data => {
