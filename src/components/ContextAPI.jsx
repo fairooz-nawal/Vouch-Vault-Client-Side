@@ -9,7 +9,16 @@ export const AuthProvider = createContext(null);
 const ContextAPI = ({ children }) => {
     const provider = new GoogleAuthProvider();
     const [loading, setLoading] = useState(true);
-     const [user, setUser] = useState(null);
+    const [user, setUser] = useState(null);
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(()=>{
+      fetch('http://localhost:3000/reviews')
+      .then(res => res.json())
+      .then(data => {
+        setReviews(data);
+      })
+    },[])
     const signUpUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -51,7 +60,7 @@ const ContextAPI = ({ children }) => {
   }, []);
 
     const info = {
-        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser
+        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser,reviews,setReviews
     }
     return (
         <AuthProvider.Provider value={info}>
