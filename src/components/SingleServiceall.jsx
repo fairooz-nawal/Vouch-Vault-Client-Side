@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 const SingleServiceall = ({service}) => {
-    console.log(service);
     const {_id,serviceImage, description, price, companyName,category}= service;
     return (
         <div className="card bg-lime-100 shadow-sm">

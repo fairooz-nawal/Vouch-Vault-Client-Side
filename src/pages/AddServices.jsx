@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
+import { AuthProvider } from '../components/ContextAPI';
 const AddServices = () => {
-
+    const {user} = useContext(AuthProvider);
+    console.log(user);
     const [date, setDate] = useState('');
-
     useEffect(() => {
         const currentDate = new Date();
         setDate(currentDate.toISOString().split('T')[0]);
@@ -20,7 +21,7 @@ const AddServices = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({...serviceData, addedDate: date, userEmail:"test"}),
+            body: JSON.stringify({...serviceData, addedDate: date, userEmail: user?.email}),
         })
             .then(response => response.json())
             .then(data => {

@@ -4,10 +4,13 @@ import '@smastrom/react-rating/style.css'
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2'
 import SingleReview from '../components/SingleReview';
+import { useContext } from 'react';
+import { AuthProvider } from '../components/ContextAPI';
 
 const reviewPromise = fetch('http://localhost:3000/reviews')
     .then(res => res.json())
 const ServiceDetail = () => {
+    const {user} = useContext(AuthProvider)
     const allreviewdb = use(reviewPromise);
     const single = useLoaderData();
     const { _id, addedDate, category, companyName, description, price, serviceImage, serviceTitle, userEmail, website } = single;
@@ -28,14 +31,14 @@ const ServiceDetail = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({review, addedDate: date, userEmail: "test", rating: rating,serviceId:_id}),
+            body: JSON.stringify({review, addedDate: date, userEmail: user?.email, image:user?.photoURL, rating: rating, serviceId:_id}),
         })
             .then(response => response.json())
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
-                        title: "Service is added Successfully!",
+                        title: "Your Review is added Successfully!",
                         icon: "success",
                         draggable: true
                     }).then(()=>{

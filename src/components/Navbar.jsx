@@ -4,8 +4,7 @@ import { NavLink, Link } from 'react-router';
 import { AuthProvider } from "./ContextAPI";
 
 const Navbar = () => {
-    const { user } = useContext(AuthProvider);
-    console.log(user);
+    const { user, signOutUser } = useContext(AuthProvider);
     const link = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
         <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>
@@ -14,8 +13,18 @@ const Navbar = () => {
             <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
             <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Review</NavLink></li>
         </>}
-
     </>
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log("Sign out successful");
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error);
+            });
+    }
+    
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -43,7 +52,7 @@ const Navbar = () => {
                         {
                             user ? <>
                                 <Link className="btn text-red-600 bg-white">User PHOTO</Link>
-                                <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/logout">Log Out</Link>
+                                <button onClick={handleSignOut} className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/logout">Log Out</button>
                             </> : <>
                                 <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/register">Register</Link>
                                 <Link className="btn bg-red-600 text-white hover:text-red-600 hover:bg-white" to="/auth/login">Login</Link>
