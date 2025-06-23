@@ -2,11 +2,15 @@ import React, { Suspense, useContext } from 'react';
 import MySingularService from '../components/MySingularService';
 import { AuthProvider } from '../components/ContextAPI';
 import { servicePromise } from '../components/API/ServiceApi';
+import { Helmet } from 'react-helmet';
 
 const MyServices = () => {
     const { user } = useContext(AuthProvider);
     return (
         <div className="min-h-screen flex flex-col">
+             <Helmet>
+                <title>My Services</title> 
+            </Helmet>
             <div className="flex-grow">
                 <Suspense fallback={<div className="text-center py-20"><progress className="progress w-56"></progress></div>}>
                     <MySingularService servicePromise={servicePromise(user?.email)} />

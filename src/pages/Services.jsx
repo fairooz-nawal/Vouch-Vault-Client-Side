@@ -2,13 +2,16 @@ import React from 'react';
 import { useLoaderData } from 'react-router';
 import SingleServiceall from '../components/SingleServiceall';
 import { motion } from 'framer-motion';  
-
+import { Helmet } from 'react-helmet';
 const Services = () => {
     const allservices = useLoaderData();
     console.log(allservices);
 
     return (
         <div className='max-w-full md:max-w-7xl mx-auto my-[100px]'>
+             <Helmet>
+                <title>All Services</title> 
+            </Helmet>
             <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] p-5"
                 initial={{ opacity: 0 }}  

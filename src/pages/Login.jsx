@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2'
 import { AuthProvider } from '../components/ContextAPI';
+import { Helmet } from 'react-helmet';
 const Login = () => {
     const { signInUser, signUpWithGoogle} = useContext(AuthProvider);
     const [error, setError] = useState('');
@@ -68,6 +69,9 @@ const Login = () => {
     }
     return (
         <div className='bg-secondary'>
+             <Helmet>
+                <title>Login</title> 
+            </Helmet>
             <div className="hero bg-base-200 min-h-screen ">
                 <div className="card text-gray-800  space-y-4 w-full max-w-sm border-2 border-amber-300 rounded-2xl shrink-0 shadow-2xl my-[200px] md:my-[100px] lg:my-[150px] p-5 ">
                     <div className="text-center lg:text-left">

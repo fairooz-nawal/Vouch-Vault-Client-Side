@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import SingleReview from '../components/SingleReview';
 import { useContext } from 'react';
 import { AuthProvider } from '../components/ContextAPI';
+import { Helmet } from 'react-helmet';
 
 const reviewPromise = fetch('http://localhost:3000/reviews')
     .then(res => res.json())
@@ -62,6 +63,9 @@ const ServiceDetail = () => {
     }
     return (
         <div className="py-[100px] bg-white">
+             <Helmet>
+                <title>Services Details</title> 
+            </Helmet>
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-gray-300 rounded-2xl bg-gray-100">
                     <div className="p-5 border-2 border-gray-300 rounded-2xl bg-white">
