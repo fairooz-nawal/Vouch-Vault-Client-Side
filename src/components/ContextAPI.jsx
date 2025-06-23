@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithP
 import auth from '../Firebase/Firebase.config'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
-
+import Swal from 'sweetalert2'
 export const AuthProvider = createContext(null);
 
 const ContextAPI = ({ children }) => {
@@ -44,6 +44,49 @@ const ContextAPI = ({ children }) => {
     return signOut(auth);
   }
 
+  const handleDelete = (id) => {
+   
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:3000/reviews/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Review has been deleted.",
+                                icon: "success",
+                                draggable: true
+                            });
+                            const remainingRecipes = reviews.filter(r => r._id !== id);
+                            setReviews(remainingRecipes);
+                            window.location.reload();
+                        }
+
+                    })
+                    .catch(err => {
+                        console.error("Error while deleting recipe:", err);
+                        Swal.fire({
+                            title: "Error",
+                            text: "Could not delete the recipe. Please try again.",
+                            icon: "error"
+                        });
+                    });
+            }
+        }
+        )
+    };
+
      useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -61,7 +104,7 @@ const ContextAPI = ({ children }) => {
   }, []);
 
     const info = {
-        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser,reviews,setReviews,services, setServices
+        signUpUser, loading, signInUser, signUpWithGoogle,updateUser,user,signOutUser,reviews,setReviews,services, setServices,handleDelete
     }
     return (
         <AuthProvider.Provider value={info}>
