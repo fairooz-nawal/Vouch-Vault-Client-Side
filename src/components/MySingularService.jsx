@@ -6,11 +6,10 @@ const MySingularService = ({ servicePromise }) => {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full table-auto bg-white rounded-lg shadow-md">
-                {/* Head */}
                 <thead>
                     <tr className="text-center bg-indigo-600 text-white">
                         <th className="py-2 px-4">No</th>
-                        <th className="py-2 px-4">Name</th>
+                        <th className="py-2 px-4">Company</th>
                         <th className="py-2 px-4">Logo</th>
                         <th className="py-2 px-4">Job</th>
                         <th className="py-2 px-4">Actions</th>

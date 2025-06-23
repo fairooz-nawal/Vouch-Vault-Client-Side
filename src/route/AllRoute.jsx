@@ -11,6 +11,7 @@ import AuthLayout from "../layout/AuthLayout";
 import ServiceDetail from "../pages/ServiceDetail";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
             Component: Registration
         }
     ]
+  },
+  {
+    path:"*",
+    Component: Error
   }
 ]);
 

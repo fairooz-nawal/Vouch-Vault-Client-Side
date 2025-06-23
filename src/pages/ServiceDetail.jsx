@@ -82,11 +82,7 @@ const ServiceDetail = () => {
                             <p className="">{description}</p>
                             <p className="font-bold ">{userEmail}</p>
                         </div>
-
-
                         <div className="w-[190px] bg-black rounded-full p-2"><p className="font-bold text-white">Price: {price}</p></div>
-
-                        {/* <button onClick={() => handleLike(singleRecipe._id)} className="btn btn-primary">Like this Recipe</button> */}
                     </div>
                 </div><br />
                 <h1 className="text-xl md:text-2xl font-bold">Add Your Review Here</h1>

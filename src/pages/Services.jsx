@@ -1,17 +1,38 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import SingleServiceall from '../components/SingleServiceall';
+import { motion } from 'framer-motion';  
 
 const Services = () => {
     const allservices = useLoaderData();
     console.log(allservices);
+
     return (
         <div className='max-w-full md:max-w-7xl mx-auto my-[100px]'>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] p-5">
+            <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] p-5"
+                initial={{ opacity: 0 }}  
+                animate={{ opacity: 1 }}  
+                transition={{ duration: 0.5 }}
+            >
                 {
-                    allservices.map(service => <SingleServiceall key={service._id} service={service}></SingleServiceall>)
+                    allservices.map((service, index) => (
+                        <motion.div
+                            key={service._id}
+                            initial={{ opacity: 0, y: 50 }}  
+                            animate={{ opacity: 1, y: 0 }}    
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.1,   
+                                type: 'spring',
+                                stiffness: 120,        
+                            }}
+                        >
+                            <SingleServiceall service={service} />
+                        </motion.div>
+                    ))
                 }
-            </div>
+            </motion.div>
         </div>
     );
 };

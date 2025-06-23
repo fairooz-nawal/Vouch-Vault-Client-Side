@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 const SingleServiceall = ({service}) => {
-    const {_id,serviceImage, description, price, companyName,category}= service;
+    const {_id,serviceImage,serviceTitle, description, price,category}= service;
     return (
         <div className="card bg-lime-100 shadow-sm">
             <figure>
@@ -12,7 +12,7 @@ const SingleServiceall = ({service}) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">
-                    {companyName}
+                    {serviceTitle}
                     <div className="badge badge-secondary">{price}</div>
                 </h2>
                 <div className="bg-blue-200 w-[200px] rounded-full">
