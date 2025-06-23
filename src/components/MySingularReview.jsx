@@ -102,9 +102,9 @@ const UpdateModal = ({ rating, setRating, review, serviceId, serviceTitle, handl
                         <div className="card-body space-y-2">
                             <form onSubmit={handleSubmit} className="mt-5">
                                 <span>Service ID</span>
-                                <input type="text" class="input input-lg" name='serviceId' disabled="true" defaultValue={serviceId} /><br />
+                                <input type="text" className="input input-lg" name='serviceId' disabled="true" defaultValue={serviceId} /><br />
                                 <span>Service Title</span>
-                                <input type="text" class="input input-lg" name='serviceTitle' disabled="true" defaultValue={serviceTitle} />
+                                <input type="text" className="input input-lg" name='serviceTitle' disabled="true" defaultValue={serviceTitle} />
                                 <p>Review</p>
                                 <textarea
                                     className="textarea textarea-bordered w-full h-32"

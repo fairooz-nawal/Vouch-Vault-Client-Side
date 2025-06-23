@@ -1,9 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './ContextAPI';
 import Swal from 'sweetalert2';
 
 const SingleRowService = ({ eachService, index }) => {
-    const { services, setServices } = useContext(AuthProvider);
+    const { user,services, setServices } = useContext(AuthProvider);
+    const {_id,serviceImage,serviceTitle,companyName,website,description,category,price,} = eachService
+
+     const [date, setDate] = useState('');
+        useEffect(() => {
+            const currentDate = new Date();
+            setDate(currentDate.toISOString().split('T')[0]);
+        }, []);
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -45,22 +52,95 @@ const SingleRowService = ({ eachService, index }) => {
         });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const formData = new FormData(form);
+        const serviceData = Object.fromEntries(formData.entries());
+        console.log(serviceData,_id);
+        fetch(`http://localhost:3000/allservices/${_id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({...serviceData, addedDate: date, userEmail: user?.email }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                   form.reset();
+                    window.location.reload();
+                    document.getElementById(`my_modal_${_id}`).checked = false;
+                }
+            })
+    }
+
     return (
         <tr className="text-center border-b hover:bg-gray-100 transition duration-200">
             <td className="py-4 px-4">{index + 1}</td>
-            <td className="py-4 px-4 font-medium">{eachService?.companyName}</td>
+            <td className="py-4 px-4 font-medium">{companyName}</td>
             <td className="py-4 px-4">
                 <div className="flex justify-center">
-                    <img className="w-12 h-12 rounded-full" src={eachService?.serviceImage} alt={eachService?.companyName} />
+                    <img className="w-12 h-12 rounded-full" src={serviceImage} alt={companyName} />
                 </div>
             </td>
-            <td className="py-4 px-4">{eachService?.serviceTitle}</td>
+            <td className="py-4 px-4">{serviceTitle}</td>
             <td className="py-4 px-4 space-x-2">
-                <button className="btn bg-green-600 text-white hover:bg-green-700 transition duration-300">Update</button>
-                <button onClick={() => handleDelete(eachService?._id)} className="btn bg-red-600 text-white hover:bg-red-700 transition duration-300">Delete</button>
+                <button onClick={() => handleDelete(_id)} className="btn bg-red-600 text-white hover:bg-red-700 transition duration-300">Delete</button>
+                 <label htmlFor={`my_modal_${_id}`} className="btn btn-primary" type="button">Update</label>
+
+                    {/* Put this part before </body> tag */}
+                    <input type="checkbox" id={`my_modal_${_id}`} className="modal-toggle" />
+                    <UpdateModal
+                        serviceImage={serviceImage}
+                        serviceTitle={serviceTitle}
+                        companyName={companyName}
+                        website={website}
+                        description={description}
+                        category={category}
+                        price={price}
+                        handleSubmit={handleSubmit}
+                    />
             </td>
         </tr>
     );
 };
+
+const UpdateModal = ({ serviceImage,serviceTitle,companyName,website,description,category,price, handleSubmit }) => {
+    return (
+        <div className="modal z-5" role="dialog">
+            <div className="modal-box bg-base-200 text-black">
+                <div className="hero-content flex-col rounded-2xl">
+                    <div className="text-center lg:text-left">
+                        <h1 className="text-3xl font-bold">Update Your Review</h1>
+                    </div>
+
+                    <div className="card bg-base-200 border-2 border-amber-300 w-full max-w-md shadow-2xl">
+                        <div className="card-body space-y-2">
+                           <form onSubmit={handleSubmit}>
+                            <label className="label text-lg">Service Image</label>
+                            <input type="text" className="input w-full" name="serviceImage" defaultValue={serviceImage}placeholder="Enter photo" />
+                            <label className="label text-lg">Service Title</label>
+                            <input type="text" className="input w-full" name="serviceTitle" defaultValue={serviceTitle} placeholder="Enter photo" />
+                            <label className="label text-lg">Company Name</label>
+                            <input type="text" className="input w-full" name="companyName" defaultValue={companyName} placeholder="Enter Company" />
+                            <label className="label text-lg">Website</label>
+                            <input type="text" className="input w-full" name="website" defaultValue={website}placeholder="Enter Website" />
+                            <label className="label text-lg">Description</label>
+                            <input type="text" className="input w-full" name="description" defaultValue={description} placeholder="Enter description" />
+                            <label className="label text-lg">Category</label>
+                            <input type="text" className="input w-full" name="category" defaultValue={category}placeholder="Enter category" />
+                            <label className="label text-lg">Price</label>
+                            <input type="text" className="input w-full" name="price" defaultValue={price} placeholder="Enter price" />
+
+                            <button className="btn btn-neutral mt-4">Update Service</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>)
+}
 
 export default SingleRowService;
