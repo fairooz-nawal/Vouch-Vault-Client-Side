@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "category": "Food"
+    },
+    {
+        "id": 2,
+        "category": "Utility"
+    },
+    {
+        "id": 3,
+        "category": "Bank"
+    },
+    {
+        "id": 4,
+        "category": "Travel"
+    },
+    {
+        "id": 5,
+        "category": "Entertainment"
+    },
+    {
+        "id": 6,
+        "category": "Education"
+    },
+    {
+        "id": 7,
+        "category": "Home Services"
+    },
+    {
+        "id": 8,
+        "category": "Healthcare"
+    },
+    {
+        "id": 9,
+        "category": "Security"
+    }
+]
