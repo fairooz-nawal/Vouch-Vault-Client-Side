@@ -12,6 +12,7 @@ import ServiceDetail from "../pages/ServiceDetail";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import Error from "../pages/Error";
+import ProtectedRoute from "./ProtectedRoutes";
 
 const router = createBrowserRouter([
   {
@@ -31,19 +32,19 @@ const router = createBrowserRouter([
         },
         {
             path:"/addServices",
-            Component: AddServices
+            element:<ProtectedRoute><AddServices></AddServices></ProtectedRoute>
         },
         {
             path:"/myServices",
-            Component: MyServices
+            element:<ProtectedRoute> <MyServices></MyServices></ProtectedRoute>
         },
         {
             path:"/myReview",
-            Component: MyReview
+            element:<ProtectedRoute><MyReview></MyReview></ProtectedRoute>
         },
         {
             path:"/singleService/:id",
-            Component: ServiceDetail,
+            element:<ProtectedRoute><ServiceDetail></ServiceDetail></ProtectedRoute>,
             loader: ({params})=>fetch(`http://localhost:3000/allservices/${params.id}`),
         }
     ]

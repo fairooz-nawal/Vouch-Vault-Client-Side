@@ -7,16 +7,18 @@ import SingleReview from '../components/SingleReview';
 import { useContext } from 'react';
 import { AuthProvider } from '../components/ContextAPI';
 import { Helmet } from 'react-helmet';
+import useApplicationAPI from '../components/hooks/useApplicationAPI';
 
 const reviewPromise = fetch('http://localhost:3000/reviews')
     .then(res => res.json())
 const ServiceDetail = () => {
-    const {user} = useContext(AuthProvider)
+    const { addReview } = useApplicationAPI();
+    const { user } = useContext(AuthProvider)
     const allreviewdb = use(reviewPromise);
     const single = useLoaderData();
     const { _id, addedDate, category, companyName, description, price, serviceImage, serviceTitle, userEmail, website } = single;
     const allreview = allreviewdb.filter(review => review.serviceId === _id);
-    
+
     const [date, setDate] = useState('');
     const [rating, setRating] = useState(0);
     useEffect(() => {
@@ -27,26 +29,20 @@ const ServiceDetail = () => {
         e.preventDefault();
         const form = e.target;
         const review = form.message.value;
-        fetch('http://localhost:3000/reviews', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({review, addedDate: date, userEmail: user?.email, image:user?.photoURL, rating: rating, serviceId:_id, serviceTitle:serviceTitle}),
-        })
-            .then(response => response.json())
+        const doc = { review, addedDate: date, userEmail: user?.email, image: user?.photoURL, rating: rating, serviceId: _id, serviceTitle: serviceTitle }
+        addReview(doc)
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.data.insertedId) {
                     Swal.fire({
                         title: "Your Review is added Successfully!",
                         icon: "success",
                         draggable: true
-                    }).then(()=>{
-                         form.reset();
+                    }).then(() => {
+                        form.reset();
                         window.location.reload();
                     });
-                   
+
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -54,7 +50,7 @@ const ServiceDetail = () => {
                         text: "Something went wrong!",
                     });
                 }
-                
+
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -63,8 +59,8 @@ const ServiceDetail = () => {
     }
     return (
         <div className="py-[100px] bg-white">
-             <Helmet>
-                <title>Services Details</title> 
+            <Helmet>
+                <title>Services Details</title>
             </Helmet>
             <div className="max-w-5xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 border-2 border-gray-300 rounded-2xl bg-gray-100">
@@ -104,12 +100,12 @@ const ServiceDetail = () => {
                     />
                     <button className="btn btn-primary mt-3">Submit Review</button>
                 </form><br />
-                 <h1 className="text-xl md:text-2xl font-bold">All Reviews : {allreview.length}</h1>
-                 
-               {
-                allreview.length === 0 ? <p className='text-white p-5 bg-red-500 font-bold rounded-2xl'>No reviews found for this service.</p> :
-                allreview.map(singleReview => <SingleReview key={singleReview._id} singleReview={singleReview}></SingleReview>)
-               }
+                <h1 className="text-xl md:text-2xl font-bold">All Reviews : {allreview.length}</h1>
+
+                {
+                    allreview.length === 0 ? <p className='text-white p-5 bg-red-500 font-bold rounded-2xl'>No reviews found for this service.</p> :
+                        allreview.map(singleReview => <SingleReview key={singleReview._id} singleReview={singleReview}></SingleReview>)
+                }
             </div>
         </div>
     );

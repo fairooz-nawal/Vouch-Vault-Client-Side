@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthProvider } from './ContextAPI';
 import Swal from 'sweetalert2';
 import { motion } from 'framer-motion';
+import useApplicationAPI from './hooks/useApplicationAPI';
 
 const SingleRowService = ({ eachService, index }) => {
     const { user, services, setServices } = useContext(AuthProvider);
     const { _id, serviceImage, serviceTitle, companyName, website, description, category, price } = eachService;
-
+    const { updateService, deleteService } = useApplicationAPI();
     const [date, setDate] = useState('');
     useEffect(() => {
         const currentDate = new Date();
@@ -24,12 +25,9 @@ const SingleRowService = ({ eachService, index }) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/allservices/${id}`, {
-                    method: 'DELETE',
-                })
-                    .then(res => res.json())
+                deleteService(id)
                     .then(data => {
-                        if (data.deletedCount > 0) {
+                        if (data.data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your Service has been deleted.",
@@ -59,16 +57,9 @@ const SingleRowService = ({ eachService, index }) => {
         const formData = new FormData(form);
         const serviceData = Object.fromEntries(formData.entries());
         console.log(serviceData, _id);
-        fetch(`http://localhost:3000/allservices/${_id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ ...serviceData, addedDate: date, userEmail: user?.email }),
-        })
-            .then(res => res.json())
+        updateService(_id,{ ...serviceData, addedDate: date, userEmail: user?.email })
             .then(data => {
-                if (data.modifiedCount > 0) {
+                if (data.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Updated!",
                         text: "Your Service has been Updated.",

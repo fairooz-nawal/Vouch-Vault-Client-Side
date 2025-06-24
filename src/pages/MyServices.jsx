@@ -1,11 +1,12 @@
 import React, { Suspense, useContext } from 'react';
 import MySingularService from '../components/MySingularService';
 import { AuthProvider } from '../components/ContextAPI';
-import { servicePromise } from '../components/API/ServiceApi';
 import { Helmet } from 'react-helmet';
+import useApplicationAPI from '../components/hooks/useApplicationAPI';
 
 const MyServices = () => {
     const { user } = useContext(AuthProvider);
+    const {servicePromise} = useApplicationAPI();
     return (
         <div className="min-h-screen flex flex-col">
              <Helmet>

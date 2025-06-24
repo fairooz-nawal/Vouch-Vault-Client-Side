@@ -1,10 +1,11 @@
 import React, { Suspense, useContext } from 'react';
 import { AuthProvider } from '../components/ContextAPI';
-import { reviewPromise } from '../components/API/ReviewApi';
 import MySingularReviewContainer from '../components/MySingularReviewContainer';
 import { Helmet } from 'react-helmet';
+import useApplicationAPI from '../components/hooks/useApplicationAPI';
 const MyReview = () => {
     const {user} = useContext(AuthProvider);
+    const {reviewPromise} = useApplicationAPI();
     return (
         <div className="min-h-screen flex flex-col">
              <Helmet>

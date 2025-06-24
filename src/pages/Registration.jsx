@@ -1,6 +1,6 @@
 
 import React, { useContext, useState, } from 'react';
-import { Link, } from 'react-router';
+import { Link, useLocation, useNavigate, } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2'
 import { AuthProvider } from '../components/ContextAPI';
@@ -8,6 +8,8 @@ import { Helmet } from 'react-helmet';
 const Registration = () => {
     const { signUpUser, updateUser,setUser } = useContext(AuthProvider);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleSubmitForm = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -38,6 +40,7 @@ const Registration = () => {
                             draggable: true
                         });
                     }
+                    navigate(location?.state || '/');
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
@@ -47,6 +50,7 @@ const Registration = () => {
                         text: "Something went wrong!",
                     });
                     setError(errorMessage);
+                    navigate('/auth/register');
                 });
         }
         else {

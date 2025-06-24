@@ -3,10 +3,12 @@ import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
 import Swal from 'sweetalert2';
 import { AuthProvider } from './ContextAPI';
-import { motion } from 'framer-motion';  
+import { motion } from 'framer-motion';
+import useApplicationAPI from './hooks/useApplicationAPI';
 
 const MySingularReview = ({ eachReview }) => {
-    const { user, handleDelete } = useContext(AuthProvider);
+    const { user, reviews, setReviews } = useContext(AuthProvider);
+     const { updateReview, deleteReview } = useApplicationAPI();
     const [date, setDate] = useState('');
     const [newrating, setRating] = useState(0);
     const { addedDate, rating, image, review, _id, serviceTitle, userEmail, serviceId } = eachReview;
@@ -16,6 +18,47 @@ const MySingularReview = ({ eachReview }) => {
         setDate(currentDate.toISOString().split('T')[0]);
     }, []);
 
+    const handleDelete = (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deleteReview(id)
+                    .then(data => {
+                        if (data.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Review has been deleted.",
+                                icon: "success",
+                                draggable: true
+                            }).then(() => {
+                                const remainingReviews = reviews.filter(r => r._id !== id);
+                                setReviews(remainingReviews);
+                            });
+
+                        }
+
+                    })
+                    .catch(err => {
+                        console.error("Error while deleting review:", err);
+                        Swal.fire({
+                            title: "Error",
+                            text: "Could not delete the review. Please try again.",
+                            icon: "error"
+                        });
+                    });
+            }
+        }
+        )
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -24,16 +67,9 @@ const MySingularReview = ({ eachReview }) => {
         const serviceId = form.serviceId.value;
         const doc = { review, serviceTitle, serviceId, rating: newrating, image: user?.photoURL, addedDate: date, userEmail: user?.email };
 
-        fetch(`http://localhost:3000/reviews/${_id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(doc),
-        })
-            .then(res => res.json())
+        updateReview(_id,doc)
             .then(data => {
-                if (data.modifiedCount > 0) {
+                if (data.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Updated!",
                         text: "Your Review has been Updated.",
@@ -51,8 +87,8 @@ const MySingularReview = ({ eachReview }) => {
     return (
         <motion.div
             className="max-w-full md:max-w-5xl mx-auto p-5"
-            initial={{ opacity: 0, y: 20 }}   
-            animate={{ opacity: 1, y: 0 }}     
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
         >
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 border rounded-lg shadow-lg mb-3 bg-sky-400 text-white">
@@ -99,9 +135,9 @@ const UpdateModal = ({ rating, setRating, review, serviceId, serviceTitle, handl
         <motion.div
             className="modal z-5"
             role="dialog"
-            initial={{ opacity: 0, scale: 0.8 }}  
-            animate={{ opacity: 1, scale: 1 }}     
-            exit={{ opacity: 0, scale: 0.8 }}      
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
         >
             <div className="modal-box bg-base-200 text-black">

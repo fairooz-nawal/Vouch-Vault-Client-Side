@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthProvider } from '../components/ContextAPI';
 import { Helmet } from 'react-helmet';
+import useApplicationAPI from '../components/hooks/useApplicationAPI';
 
 const AddServices = () => {
+    const { addService } = useApplicationAPI();
     const { user } = useContext(AuthProvider);
     const [date, setDate] = useState('');
 
@@ -17,17 +19,10 @@ const AddServices = () => {
         const form = e.target;
         const formData = new FormData(form);
         const serviceData = Object.fromEntries(formData.entries());
-
-        fetch('http://localhost:3000/services', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ...serviceData, addedDate: date, userEmail: user?.email }),
-        })
-            .then(response => response.json())
+        const doc = { ...serviceData, addedDate: date, userEmail: user?.email }
+        addService(doc)
             .then(data => {
-                if (data.insertedId) {
+                if (data.data.insertedId) {
                     Swal.fire({
                         title: "Service is added Successfully!",
                         icon: "success",
