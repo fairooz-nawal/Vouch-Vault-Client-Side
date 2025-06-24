@@ -104,7 +104,7 @@ const ServiceDetail = () => {
                     />
                     <button className="btn btn-primary mt-3">Submit Review</button>
                 </form><br />
-                 <h1 className="text-xl md:text-2xl font-bold">All Reviews</h1>
+                 <h1 className="text-xl md:text-2xl font-bold">All Reviews : {allreview.length}</h1>
                  
                {
                 allreview.length === 0 ? <p className='text-white p-5 bg-red-500 font-bold rounded-2xl'>No reviews found for this service.</p> :
