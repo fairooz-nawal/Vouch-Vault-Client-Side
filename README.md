@@ -40,8 +40,14 @@
 - Protected API routes via Firebase token validation
 
 ---
+## ScreenShots 
+<img width="1920" height="6240" alt="FireShot Capture 005 - Home -  vouch-vault-syeda-fairooz-nawal netlify app" src="https://github.com/user-attachments/assets/baa8193d-d2de-4ab4-bbad-2f7b7e6e69cf" />
+<img width="1920" height="4287" alt="FireShot Capture 006 - All Services -  vouch-vault-syeda-fairooz-nawal netlify app" src="https://github.com/user-attachments/assets/0990b342-faeb-4a83-bdb1-f06d31d31ff8" />
+
+
 
 ## 🖥️ Pages & Layout
+
 
 ### 🔗 Public Routes
 - Home (`/`)
