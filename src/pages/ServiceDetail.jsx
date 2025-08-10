@@ -58,7 +58,7 @@ const ServiceDetail = () => {
             });
     }
     return (
-        <div className="py-[100px] bg-white">
+        <div className="py-[100px]">
             <Helmet>
                 <title>Services Details</title>
             </Helmet>

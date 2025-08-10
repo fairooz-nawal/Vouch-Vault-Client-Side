@@ -76,7 +76,7 @@ const SingleRowService = ({ eachService, index }) => {
 
     return (
         <motion.tr
-            className="text-center border-b hover:bg-gray-100 transition duration-200"
+            className="text-center border-b hover:bg-gray-100 transition duration-200 text-black"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}

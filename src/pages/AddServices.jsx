@@ -44,7 +44,7 @@ const AddServices = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="min-h-screen mt-[100px]  flex items-center justify-center">
             <Helmet>
                 <title>Add Service</title>
             </Helmet>
@@ -57,7 +57,7 @@ const AddServices = () => {
                             type="text"
                             name="serviceImage"
                             placeholder="Enter image URL"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -67,7 +67,7 @@ const AddServices = () => {
                             type="text"
                             name="serviceTitle"
                             placeholder="Enter service title"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -77,7 +77,7 @@ const AddServices = () => {
                             type="text"
                             name="companyName"
                             placeholder="Enter company name"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -87,7 +87,7 @@ const AddServices = () => {
                             type="text"
                             name="website"
                             placeholder="Enter website URL"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -97,7 +97,7 @@ const AddServices = () => {
                             type="text"
                             name="description"
                             placeholder="Enter service description"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -107,7 +107,7 @@ const AddServices = () => {
                             type="text"
                             name="category"
                             placeholder="Enter service category"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
@@ -117,13 +117,13 @@ const AddServices = () => {
                             type="text"
                             name="price"
                             placeholder="Enter service price"
-                            className="input w-full p-4 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="input w-full p-4 mt-2 border bg-gray-500 font-semibold text-lg border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-200"
+                        className="w-full py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-200"
                     >
                         Add Service
                     </button>

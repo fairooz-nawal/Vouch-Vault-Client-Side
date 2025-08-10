@@ -5,7 +5,7 @@ const TotalALL = () => {
     return (
         <div className='w-full lg:w-[90%] mx-auto'>
             <p className='text-orange-600 font-semibold text-2xl text-center'>Statistics of our Services</p>
-            <h1 className="text-2xl md:text-4xl font-bold text-gray-800 text-center">Statistics</h1><br /><br />
+            <h1 className="text-2xl md:text-4xl font-bold text-center">Statistics</h1><br /><br />
             <div className="grid grid-cols-3 text-black border-2 border-gray-300 rounded-2xl py-[50px] md:py-[50px] bg-red-500 ">
                 <div className=" w-full">
                     <div className="w-3/4 lg:w-1/2 h-[150px] lg:h-[100px] bg-white mx-auto rounded-2xl py-[10px] lg:py-[20px] text-center">

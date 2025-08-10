@@ -10,8 +10,8 @@ const SingleService = ({singleService}) => {
                     className='w-full h-64 object-cover'
                     alt="Shoes" />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title">
+            <div className="card-body text-gray-800">
+                <h2 className="card-title ">
                     {companyName}
                     <div className="badge badge-secondary">{price}</div>
                 </h2>

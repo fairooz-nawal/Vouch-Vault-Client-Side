@@ -20,10 +20,10 @@ const Subscription = () => {
                         <div className=" bg-white w-11/12 lg:w-3/4 shadow-2xl rounded-2xl m-5">
                             <div className="card-body">
                                 <fieldset className="fieldset">
-                                    <label className="label">Email</label>
-                                    <input type="email" className="input" placeholder="Email" />
-                                    <label className="label">Password</label>
-                                    <input type="password" className="input" placeholder="Password" />
+                                    <label className="text-xl label text-gray-800 font-bold">Email</label>
+                                    <input type="email" className="input w-full" placeholder="Email" />
+                                    <label className="text-xl label text-gray-800 font-bold">Password</label>
+                                    <input type="password" className="input w-full" placeholder="Password" />
                                     <button className="btn btn-neutral mt-4">Subscribe</button>
                                 </fieldset>
                             </div>

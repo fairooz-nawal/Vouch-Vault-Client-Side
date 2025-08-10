@@ -90,16 +90,16 @@ const Services = () => {
             <div className="flex flex-wrap justify-center gap-4 mb-6">
                 {/* Category dropdown */}
                 <details className="dropdown">
-                    <summary className="btn m-1 bg-primary text-white">Select Service Type</summary>
-                    <ul className="text-white bg-sky-500 menu dropdown-content rounded-box z-1 w-40 p-2 shadow-sm">
-                        <li onClick={() => { setAll(true); setSortOrder(''); }} className="hover:bg-primary hover:text-white p-2">
+                    <summary className="btn m-1 bg-primary">Select Service Type</summary>
+                    <ul className=" bg-sky-500 menu dropdown-content rounded-box z-1 w-40 p-2 shadow-sm">
+                        <li onClick={() => { setAll(true); setSortOrder(''); }} className="hover:bg-primary hover:text-black p-2">
                             All Services
                         </li>
                         {allcategory.map((category) => (
                             <li
                                 onClick={() => handleCategory(category.category)}
                                 key={category.id}
-                                className="hover:bg-primary hover:text-white p-2"
+                                className="hover:bg-primary hover:text-black p-2"
                             >
                                 {category.category}
                             </li>

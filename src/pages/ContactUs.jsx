@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactUs() {
   return (
-    <section className="bg-gray-50 py-12 min-h-screen mt-[100px]">
+    <section className=" py-12 min-h-screen mt-[100px]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
@@ -20,7 +20,7 @@ export default function ContactUs() {
                   id="name"
                   name="name"
                   placeholder="Your name"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-500 font-semibold text-lg p-5 shadow-sm 
                              focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 />
               </div>
@@ -35,7 +35,7 @@ export default function ContactUs() {
                   id="email"
                   name="email"
                   placeholder="you@example.com"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-500 font-semibold text-lg p-5 shadow-sm 
                              focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 />
               </div>
@@ -50,7 +50,7 @@ export default function ContactUs() {
                   name="message"
                   rows="4"
                   placeholder="Your message..."
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
+                  className="mt-1 block w-full rounded-md border-gray-300 bg-gray-500 font-semibold text-lg p-5 shadow-sm 
                              focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 ></textarea>
               </div>
