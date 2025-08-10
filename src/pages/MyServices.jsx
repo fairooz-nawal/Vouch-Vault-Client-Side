@@ -8,7 +8,7 @@ const MyServices = () => {
     const { user } = useContext(AuthProvider);
     const {servicePromise} = useApplicationAPI();
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col mt-[100px]">
              <Helmet>
                 <title>My Services</title> 
             </Helmet>

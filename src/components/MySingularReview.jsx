@@ -94,7 +94,8 @@ const MySingularReview = ({ eachReview }) => {
             <div className="grid grid-cols-1 md:grid-cols-5 gap-4 p-4 border rounded-lg shadow-lg mb-3 bg-sky-400 text-white">
                 <div className="bg-white flex items-center justify-center shadow-lg">
                     <img
-                        src={image}
+                        src={image} 
+                        loading='lazy'
                         className="w-8/12 md:w-[150px] mx-auto rounded-lg shadow-2xl"
                     />
                 </div>
