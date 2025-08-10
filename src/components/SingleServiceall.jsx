@@ -18,7 +18,7 @@ const SingleServiceall = ({service}) => {
                 <div className="bg-blue-200 w-[200px] rounded-full">
                     <p className='text-blue-600 font-bold p-2'>Category: {category}</p>
                 </div>
-                <p>{description}</p>
+                <p className='h-[100px] overflow-hidden'>{description}</p>
                 <div className="card-actions justify-end">
                     <Link to={`/singleService/${_id}`}><button className="btn btn-primary">See Details</button></Link>
                 </div>

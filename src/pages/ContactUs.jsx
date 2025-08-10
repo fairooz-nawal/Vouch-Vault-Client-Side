@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ContactUs() {
   return (
-    <section className="bg-gray-50 py-12 min-h-screen">
+    <section className="bg-gray-50 py-12 min-h-screen mt-[100px]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           

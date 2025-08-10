@@ -52,7 +52,7 @@ const Services = () => {
             </Helmet>
 
             {/* Search Feature */}
-            <div className="mb-5 flex justify-center">
+            <div className="mb-2 flex justify-center">
                 <form onSubmit={handleSearch} className='flex'>
                     <input
                         type="text"
@@ -84,7 +84,7 @@ const Services = () => {
 
             {/* Array looping */}
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[100px] p-5"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[50px] p-5"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
