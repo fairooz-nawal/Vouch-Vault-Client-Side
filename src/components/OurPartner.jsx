@@ -5,13 +5,13 @@ import card4 from "../assets/partner-4.png"
 import { Slide } from "react-awesome-reveal";
 const Partner = () => {
     return (
-        <div className='max-w-full md:max-w-5xl lg:max-w-7xl mx-auto p-4 py-[50px] md:py-[100px] lg:py-[100px]'>
+        <div className='w-full'>
             <div className="w-full md:w-3/4 lg:w-3/4 mx-auto p-5 space-y-4 text-center">
                 <p className='text-orange-600 font-semibold text-2xl'>Meet Our Partners</p>
                 <h1 className='text-gray-800 text-2xl md:text-3xl lg:text-5xl font-bold'>We Work With</h1>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-10 lg:p-10 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-10 lg:p-10 lg:w-[94%] mx-auto">
                 <Slide direction="left">
                     <div className="space-y-4 shadow-2xl border-2 border-gray-300  text-gray-800 hover:bg-red-500 hover:text-white hover:scale-110">
                         <img className='w-full md:w-[500px] md:h-[200px]' src={card1} alt="" />

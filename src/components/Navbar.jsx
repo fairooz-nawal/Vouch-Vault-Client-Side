@@ -6,13 +6,13 @@ import { AuthProvider } from "./ContextAPI";
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthProvider);
     const link = <>
-        <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
-        <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>
-        <li><NavLink to="/contactUs" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Contact Us</NavLink></li>
+        <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>Home</NavLink></li>
+        <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>All Services</NavLink></li>
+        <li><NavLink to="/contactUs" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>Contact Us</NavLink></li>
         {user && <>
-            <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Add Services</NavLink></li>
-            <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
-            <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Review</NavLink></li>
+            <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>Add Services</NavLink></li>
+            <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>My Services</NavLink></li>
+            <li><NavLink to="/myReview" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-[1px]" : "text-black text-lg font-medium ml-[1px]"}>My Review</NavLink></li>
         </>}
     </>
 
@@ -28,7 +28,7 @@ const Navbar = () => {
     
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm w-11/12 lg:w-[90%] mx-auto">
+            <div className="navbar bg-base-100 shadow-sm w-full px-5 lg:px-[5%] mx-auto fixed top-0 left-0 z-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
