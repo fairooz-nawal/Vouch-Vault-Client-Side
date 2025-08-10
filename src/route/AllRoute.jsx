@@ -13,6 +13,7 @@ import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import Error from "../pages/Error";
 import ProtectedRoute from "./ProtectedRoutes";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contactUs",
-        Component:ContactUs,
+        Component: ContactUs,
       },
     ]
   },

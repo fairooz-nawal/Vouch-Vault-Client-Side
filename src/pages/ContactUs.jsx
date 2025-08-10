@@ -1,8 +1,8 @@
 import React from "react";
 
-export default const ContactUs = () => {
+export default function ContactUs() {
   return (
-    <section className="bg-gray-50 py-12">
+    <section className="bg-gray-50 py-12 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           
@@ -21,7 +21,7 @@ export default const ContactUs = () => {
                   name="name"
                   placeholder="Your name"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
-                             focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                             focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 />
               </div>
 
@@ -36,7 +36,7 @@ export default const ContactUs = () => {
                   name="email"
                   placeholder="you@example.com"
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
-                             focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                             focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 />
               </div>
 
@@ -51,7 +51,7 @@ export default const ContactUs = () => {
                   rows="4"
                   placeholder="Your message..."
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm 
-                             focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                             focus:border-red-600 focus:ring-red-600 sm:text-sm"
                 ></textarea>
               </div>
 
@@ -59,9 +59,9 @@ export default const ContactUs = () => {
               <button
                 type="submit"
                 className="w-full inline-flex justify-center rounded-md border border-transparent 
-                           bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm 
-                           hover:bg-indigo-700 focus:outline-none focus:ring-2 
-                           focus:ring-indigo-500 focus:ring-offset-2"
+                           bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm 
+                           hover:bg-red-700 focus:outline-none focus:ring-2 
+                           focus:ring-red-600 focus:ring-offset-2"
               >
                 Send Message
               </button>
@@ -69,13 +69,13 @@ export default const ContactUs = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-col justify-center bg-indigo-600 text-white rounded-lg p-8">
-            <h3 className="text-xl font-semibold mb-4">Get in touch</h3>
+          <div className="flex flex-col justify-center bg-red-600 text-white rounded-lg p-8">
+            <h3 className="text-3xl font-extrabold mb-4">Get in touch</h3>
             <p className="mb-6 text-indigo-100">
               We’d love to hear from you. Whether you have a question about features, 
               pricing, or anything else — our team is ready to answer all your questions.
             </p>
-            <ul className="space-y-4">
+            <ul className="space-y-4 bg-white p-4 rounded-lg text-black">
               <li>
                 📍 <span className="ml-2">123 Main Street, New York, NY</span>
               </li>
@@ -93,3 +93,5 @@ export default const ContactUs = () => {
     </section>
   );
 }
+
+
