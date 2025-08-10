@@ -8,6 +8,7 @@ const Navbar = () => {
     const link = <>
         <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Home</NavLink></li>
         <li><NavLink to="/services" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>All Services</NavLink></li>
+        <li><NavLink to="/contactUs" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Contact Us</NavLink></li>
         {user && <>
             <li><NavLink to="/addServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>Add Services</NavLink></li>
             <li><NavLink to="/myServices" className={({ isActive }) => isActive ? "bg-red-600 text-white text-lg font-medium ml-3" : "text-black text-lg font-medium ml-3"}>My Services</NavLink></li>
@@ -27,7 +28,7 @@ const Navbar = () => {
     
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-base-100 shadow-sm w-11/12 lg:w-[90%] mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

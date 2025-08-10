@@ -52,7 +52,8 @@ const ContextAPI = ({ children }) => {
         console.log(currentUser);
         setUser(currentUser);
         setLoading(false);
-      } else {
+      } 
+      else {
         setUser(null);
         setLoading(false);
       }

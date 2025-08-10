@@ -11,7 +11,7 @@ const Partner = () => {
                 <h1 className='text-gray-800 text-2xl md:text-3xl lg:text-5xl font-bold'>We Work With</h1>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5 md:p-10 lg:p-10 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:p-10 lg:p-10 ">
                 <Slide direction="left">
                     <div className="space-y-4 shadow-2xl border-2 border-gray-300  text-gray-800 hover:bg-red-500 hover:text-white hover:scale-110">
                         <img className='w-full md:w-[500px] md:h-[200px]' src={card1} alt="" />

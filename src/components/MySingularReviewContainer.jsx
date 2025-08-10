@@ -3,7 +3,7 @@ import MySingularReview from './MySingularReview';
 
 const MySingularReviewContainer = ({reviewPromise}) => {
     const allReviews = use(reviewPromise);
-    console.log(allReviews.length)
+    console.log(allReviews)
     return (
         <div>
             {

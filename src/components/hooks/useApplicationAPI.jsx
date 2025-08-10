@@ -6,7 +6,7 @@ const useApplicationAPI = () => {
 
     // get apis
     const reviewPromise = email =>{
-        return axiosSecure.get(`/reviews?email=${email}`).then(res => res.data);
+        return axiosSecure.get(`/myreviews?email=${email}`).then(res => res.data);
     }
     const servicePromise = (email) =>{
         return axiosSecure.get(`/myservices?email=${email}`).then(res =>res.data);

@@ -17,55 +17,59 @@ import ProtectedRoute from "./ProtectedRoutes";
 const router = createBrowserRouter([
   {
     path: "/",
-    Component:HomeLayout,
-    children:[
-        {
-            index:true,
-            path:"/",
-            Component: Home,
-            loader: () => fetch('http://localhost:3000/services')
-        },
-        {
-            path:"/services",
-            Component: Services,
-            loader: () => fetch('http://localhost:3000/allservices')
-        },
-        {
-            path:"/addServices",
-            element:<ProtectedRoute><AddServices></AddServices></ProtectedRoute>
-        },
-        {
-            path:"/myServices",
-            element:<ProtectedRoute> <MyServices></MyServices></ProtectedRoute>
-        },
-        {
-            path:"/myReview",
-            element:<ProtectedRoute><MyReview></MyReview></ProtectedRoute>
-        },
-        {
-            path:"/singleService/:id",
-            element:<ProtectedRoute><ServiceDetail></ServiceDetail></ProtectedRoute>,
-            loader: ({params})=>fetch(`http://localhost:3000/allservices/${params.id}`),
-        }
+    Component: HomeLayout,
+    children: [
+      {
+        index: true,
+        path: "/",
+        Component: Home,
+        loader: () => fetch('http://localhost:3000/services')
+      },
+      {
+        path: "/services",
+        Component: Services,
+        loader: () => fetch('http://localhost:3000/allservices')
+      },
+      {
+        path: "/addServices",
+        element: <ProtectedRoute><AddServices></AddServices></ProtectedRoute>
+      },
+      {
+        path: "/myServices",
+        element: <ProtectedRoute> <MyServices></MyServices></ProtectedRoute>
+      },
+      {
+        path: "/myReview",
+        element: <ProtectedRoute><MyReview></MyReview></ProtectedRoute>
+      },
+      {
+        path: "/singleService/:id",
+        element: <ProtectedRoute><ServiceDetail></ServiceDetail></ProtectedRoute>,
+        loader: ({ params }) => fetch(`http://localhost:3000/allservices/${params.id}`),
+      },
+      {
+        path: "/contactUs",
+        Component:,
+      },
     ]
   },
   {
-    path:"/auth",
-    Component:AuthLayout,
-    children:[
-        {
-            index:true,
-            path:"/auth/login",
-            Component: Login
-        },
-        {
-            path:"/auth/register",
-            Component: Registration
-        }
+    path: "/auth",
+    Component: AuthLayout,
+    children: [
+      {
+        index: true,
+        path: "/auth/login",
+        Component: Login
+      },
+      {
+        path: "/auth/register",
+        Component: Registration
+      }
     ]
   },
   {
-    path:"*",
+    path: "*",
     Component: Error
   }
 ]);

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 const SingleService = ({singleService}) => {
     const {_id,serviceImage, description, price, companyName}= singleService;
     return (
-        <div className="card bg-lime-100 w-96 shadow-sm">
+        <div className="card bg-lime-100 w-full shadow-sm">
             <figure>
                 <img
                     src={serviceImage}

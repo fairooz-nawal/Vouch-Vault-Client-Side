@@ -5,15 +5,17 @@ import OurPartner from '../components/OurPartner'
 import Ready from '../components/Ready';
 import Subscription from '../components/Subscription';
 import ServiceContainer from '../components/ServiceContainer';
+import TotalALL from '../components/TotalALL';
 const Home = () => {
     return (
-        <div>
+        <div className='mx-auto'>
              <Helmet>
                 <title>Home</title>
             </Helmet>
             <Banner></Banner>
             <ServiceContainer></ServiceContainer>
             <OurPartner></OurPartner>
+            <TotalALL></TotalALL>
             <Ready></Ready>
             <Subscription></Subscription>
         </div>

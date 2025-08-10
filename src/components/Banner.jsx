@@ -15,8 +15,8 @@ const Banner = () => {
                         <a href="#slide4" className="btn btn-circle">❮</a>
                         <a href="#slide2" className="btn btn-circle">❯</a>
                     </div>
-                    <div className="absolute left-5 top-6 md:left-[5%] md:top-1/4 w-full md:w-1/2">
-                        <h1 className='text-xl md:text-5xl font-bold text-white'>Savor the Flavor: Explore Our Delicious Services</h1>
+                    <div className="absolute left-5 top-6 md:left-[5%] md:top-1/4 w-9/12 md:w-1/2">
+                        <h1 className='text-lg md:text-5xl font-bold text-white'>Savor the Flavor: Explore Our Delicious Services</h1>
                         <p className='hidden md:block text-white text-sm md:text-lg'>We're passionate about serving up more than just a meal - we're dedicated to providing an exceptional dining experience that nourishes both body and soul. </p>
                         <button className='btn bg-red-600 text-white hover:text-red-600 hover:bg-white mt-5 rounded-2xl text-base md:text-xl'>Explore Now</button>
                     </div>

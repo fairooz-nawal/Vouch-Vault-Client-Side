@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth";
 const auth = getAuth();
 
 const axiosInstance = axios.create({
+    // baseURL: 'http://localhost:3000'
     baseURL: 'http://localhost:3000'
 })
 
@@ -19,7 +20,7 @@ const useAxiosSecure = () => {
     }
     return config;
     })
-    
+
     return axiosInstance;
 };
 
