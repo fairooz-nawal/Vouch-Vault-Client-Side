@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/contactUs",
-        Component:,
+        Component:ContactUs,
       },
     ]
   },
