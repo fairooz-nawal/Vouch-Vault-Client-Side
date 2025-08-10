@@ -7,7 +7,7 @@ const ServiceContainer = () => {
     const services = useLoaderData();
 
     return (
-        <div className='w-full mx-auto p-5 mt-[100px]'>
+        <div className='w-full mx-auto p-5 my-[100px]'>
             <p className='text-orange-600 font-semibold text-2xl text-center'>Our Featured Services</p>
             <h1 className='text-2xl md:text-3xl lg:text-5xl font-bold text-center'>Our Services</h1><br /><br />
             

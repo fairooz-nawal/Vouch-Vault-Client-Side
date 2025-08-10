@@ -5,7 +5,7 @@ import card4 from "../assets/partner-4.png"
 import { Slide } from "react-awesome-reveal";
 const Partner = () => {
     return (
-        <div className='w-full'>
+        <div className='w-full mb-[100px]'>
             <div className="w-full md:w-3/4 lg:w-3/4 mx-auto p-5 space-y-4 text-center">
                 <p className='text-orange-600 font-semibold text-2xl'>Meet Our Partners</p>
                 <h1 className='text-gray-800 text-2xl md:text-3xl lg:text-5xl font-bold'>We Work With</h1>
